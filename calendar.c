@@ -96,20 +96,23 @@ void print_month(int month_current)
 
 	for(int j = 0; j < print_offset; ++j)
 	{
-		printf("%c", ' ');
+		printf("%s", "   ");
 	}
 
-	for(int i = 1; i < days_to_print; ++i)
+	for(int i = 1; i < days_to_print + 1; ++i)
 	{
 		
-		printf("%d ", i);
+		printf(" %d", i);
 		int days_until_new_line = 0;
 		const int days_per_week = 7;
 		days_until_new_line = days_per_week - print_offset;
 		if(i == days_until_new_line)
 		{
 			printf("\n");
-			
+		}
+		if(i % 7 == 0)
+		{
+			printf("\n");
 		}
 	}
 }
@@ -129,7 +132,7 @@ void print_month_name(int month_current)
 {
 	//No idea how strings work in C
 	//So I will just use numbers for now
-	printf("\t%d\n\n", month_current);
+	printf("\t%d\n\n\n\n\n", month_current);
 }
 
 void calculate_month_reference(int month_current)
