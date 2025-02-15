@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 void check_year();
 void print_month_name();
@@ -106,11 +107,15 @@ void print_month(int month_current)
 		int days_until_new_line = 0;
 		const int days_per_week = 7;
 		days_until_new_line = days_per_week - print_offset;
+		if(i <= 9)
+		{
+			printf("%c", ' ');
+		}
 		if(i == days_until_new_line)
 		{
 			printf("\n");
 		}
-		if(i % 7 == 0)
+		if(i % 7 == 0 && i != 8)
 		{
 			printf("\n");
 		}
