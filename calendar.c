@@ -16,7 +16,7 @@ int main(void)
 		++month_current;
 		print_month_name(month_current);
 		print_weekdays();
-		print_month();	
+		print_month(month_current);	
 	}
 	return 0;
 }
@@ -40,8 +40,78 @@ int main(void)
 
 void print_month(int month_current)
 {
-	int month_number = 0;
-	
+	int print_offset = 0;
+	int days_to_print = 0;
+	switch(month_current)
+	{
+	case 1:
+		days_to_print = 31;
+		print_offset = 3;
+		break;
+	case 2:
+		days_to_print = 28;
+		print_offset = 6;
+		break;
+	case 3:
+		days_to_print = 31;
+		print_offset = 6;
+		break;
+	case 4:
+		days_to_print = 30;
+		print_offset = 2;
+		break;
+	case 5:
+		days_to_print = 31;
+		print_offset = 4;
+		break;
+	case 6:
+		days_to_print = 30;
+		print_offset = 0;
+		break;
+	case 7:
+		days_to_print = 31;
+		print_offset = 2;
+		break;
+	case 8:
+		days_to_print = 31;
+		print_offset = 5;
+		break;
+	case 9:
+		days_to_print = 30;
+		print_offset = 1;
+		break;
+	case 10:
+		days_to_print = 31;
+		print_offset = 3;
+		break;
+	case 11:
+		days_to_print = 30;
+		print_offset = 6;
+		break;
+	case 12:
+		days_to_print = 31;
+		print_offset = 1;
+		break;
+	}
+
+	for(int j = 0; j < print_offset; ++j)
+	{
+		printf("%c", ' ');
+	}
+
+	for(int i = 1; i < days_to_print; ++i)
+	{
+		
+		printf("%d ", i);
+		int days_until_new_line = 0;
+		const int days_per_week = 7;
+		days_until_new_line = days_per_week - print_offset;
+		if(i == days_until_new_line)
+		{
+			printf("\n");
+			
+		}
+	}
 }
 
 void check_year()
@@ -59,50 +129,11 @@ void print_month_name(int month_current)
 {
 	//No idea how strings work in C
 	//So I will just use numbers for now
-	printf("%d\n", month_current);
+	printf("\t%d\n\n", month_current);
 }
 
-void calculate_print_offset(int month_current)
+void calculate_month_reference(int month_current)
 {
-	int print_offset = 0;
-	switch(month_current)
-	{
-	case 1:
-		print_offset = 3;
-		break;
-	case 2:
-		print_offset = 6;
-		break;
-	case 3:
-		print_offset = 6;
-		break;
-	case 4:
-		print_offset = 2;
-		break;
-	case 5:
-		print_offset = 4;
-		break;
-	case 6:
-		print_offset = 0;
-		break;
-	case 7:
-		print_offset = 2;
-		break;
-	case 8:
-		print_offset = 5;
-		break;
-	case 9:
-		print_offset = 1;
-		break;
-	case 10:
-		print_offset = 3;
-		break;
-	case 11:
-		print_offset = 6;
-		break;
-	case 12:
-		print_offset = 1;
-		break;
-	}
+	
 }
 
