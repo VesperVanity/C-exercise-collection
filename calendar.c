@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void check_year();
-void print_month_name();
+void print_month_name(int month_number);
 void print_weekdays();
 void print_month();
 
@@ -12,7 +12,7 @@ int main(void)
 	int month_max = 12;
 	for(int i = 0; i < month_max; ++i)
 	{
-		print_month_name();
+		print_month_name(i);
 		print_weekdays();
 		print_month();	
 	}
@@ -96,13 +96,48 @@ void print_weekdays()
 	printf("%s%s%s%s%s%s%s\n", "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa");
 }
 
-void print_month_name()
+void print_month_name(int month_number)
 {
-	//Don't know how to use/create strings, hence we just use ints for now
-	int month_max = 12;
-	for(int i = 0; i < month_max, ++i)
+	char month_name[20] = " ";
+	switch(month_number)
 	{
-		printf("%d", i);
+	case 1:
+		month_name[0] = 'J';
+		break;
+	case 2:
+		month_name[] = "February";
+		break;
+	case 3:
+		month_name[] = "March";
+		break;
+	case 4:
+		month_name[] = "April";
+		break;
+	case 5:
+		month_name[] = "May";
+		break;
+	case 6:
+		month_name[] = "June";
+		break;
+	case 7:
+		month_name[] = "July";
+		break;
+	case 8:
+		month_name[] = "August";
+		break;
+	case 9:
+		month_name[] = "September";
+		break;
+	case 10:
+		month_name[] = "October";
+		break;
+	case 11:
+		month_name[] = "November";
+		break;
+	case 12:
+		month_name[] = "December";
+		break;
 	}
+	printf("%s", month_name);
 }
 
