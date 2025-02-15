@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void check_year();
-void print_month_name(int month_number);
+void print_month_name();
 void print_weekdays();
 void print_month();
 
@@ -9,10 +9,12 @@ int main(void)
 {
 	printf("%s\n", "Enter the year that you want to display as a calendar, between 1800 and 2100: ");
 	check_year();
+	int month_current = 0;
 	int month_max = 12;
 	for(int i = 0; i < month_max; ++i)
 	{
-		print_month_name(i);
+		++month_current;
+		print_month_name(month_current);
 		print_weekdays();
 		print_month();	
 	}
@@ -35,22 +37,35 @@ int main(void)
 //Each month is printed separate, so dislocate the logic accordingly
 //We will just go ahead and try and see what works, since I don't really have a clue
 
+
+void print_month(int month_current)
+{
+	int month_number = 0;
+	
+}
+
 void check_year()
 {
 	//Check if input year is valid
 	//Check for leap years
 }
 
-void calculate_print_offset()
+void print_weekdays()
 {
-	
+	printf("%s %s %s %s %s %s %s\n", "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa");
 }
 
-void print_month()
+void print_month_name(int month_current)
 {
-	int month_number = 0;
+	//No idea how strings work in C
+	//So I will just use numbers for now
+	printf("%d\n", month_current);
+}
+
+void calculate_print_offset(int month_current)
+{
 	int print_offset = 0;
-	switch(month_number)
+	switch(month_current)
 	{
 	case 1:
 		print_offset = 3;
@@ -89,55 +104,5 @@ void print_month()
 		print_offset = 1;
 		break;
 	}
-}
-
-void print_weekdays()
-{
-	printf("%s%s%s%s%s%s%s\n", "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa");
-}
-
-void print_month_name(int month_number)
-{
-	char month_name[20] = " ";
-	switch(month_number)
-	{
-	case 1:
-		month_name[0] = 'J';
-		break;
-	case 2:
-		month_name[] = "February";
-		break;
-	case 3:
-		month_name[] = "March";
-		break;
-	case 4:
-		month_name[] = "April";
-		break;
-	case 5:
-		month_name[] = "May";
-		break;
-	case 6:
-		month_name[] = "June";
-		break;
-	case 7:
-		month_name[] = "July";
-		break;
-	case 8:
-		month_name[] = "August";
-		break;
-	case 9:
-		month_name[] = "September";
-		break;
-	case 10:
-		month_name[] = "October";
-		break;
-	case 11:
-		month_name[] = "November";
-		break;
-	case 12:
-		month_name[] = "December";
-		break;
-	}
-	printf("%s", month_name);
 }
 
