@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <stdbool.h>
 
-void check_year();
+int check_year(int input_year);
 void print_month_name();
 void print_weekdays();
 void print_month();
@@ -9,7 +8,12 @@ void print_month();
 int main(void)
 {
 	printf("%s\n", "Enter the year that you want to display as a calendar, between 1800 and 2100: ");
-	check_year();
+	int input_year = 0;
+	scanf("%d", &input_year);
+	if(check_year(input_year) == 1)
+	{
+		printf("%s\n", "This is a leap year");
+	}
 	int month_current = 0;
 	int month_max = 12;
 	for(int i = 0; i < month_max; ++i)
@@ -33,16 +37,17 @@ int main(void)
 //How was that, you skip leap years each 100 years?
 //Unless it's divisible by 400?
 
-
 //Loop from first day to last day of month
 //Each month is printed separate, so dislocate the logic accordingly
 //We will just go ahead and try and see what works, since I don't really have a clue
 
 
+//Using the calendar of 1800 as reference and starting point
 void print_month(int month_current)
 {
 	int print_offset = 0;
 	int days_to_print = 0;
+
 	switch(month_current)
 	{
 	case 1:
@@ -94,44 +99,64 @@ void print_month(int month_current)
 		print_offset = 1;
 		break;
 	}
-
+	
 	for(int j = 0; j < print_offset; ++j)
 	{
 		printf("%s", "   ");
 	}
-	int position = 0;
-	for(int i = 1; i < days_to_print + 1; ++i)
+	int print_position = 0;
+	int skip_digit_zero = 1;
+	for(int i = skip_digit_zero; i < days_to_print + skip_digit_zero; ++i)
 	{
-		++position;
+		++print_position;
 		printf(" %d", i);
 		int days_until_new_line = 0;
 		const int days_per_week = 7;
 		days_until_new_line = days_per_week - print_offset;
-		if(i <= 9)
+		const int single_digit_max = 9;
+		if(i <= single_digit_max)
 		{
 			printf("%c", ' ');
 		}
 		if(i == days_until_new_line)
 		{
-			//printf("\n");
-			position = 0;
+			int reset_position = 0;
+			print_position = reset_position;
 		}
-		/*if(i % 7 == 0)
+		if(print_position % 7 == 0)
 		{
 			printf("\n");
 		}
-		*/
-		if(position % 7 == 0)
+		if(i == days_to_print)
 		{
 			printf("\n");
 		}
 	}
 }
 
-void check_year()
+int check_year(int input_year)
 {
 	//Check if input year is valid
 	//Check for leap years
+	if(input_year < 1800 || input_year > 2100)
+	{
+		printf("%s\n", "Input year is not between 1800 and 2100, try again.");
+		return;
+	}
+	int is_leap_year = 0;
+	if(input_year % 4 == 0)
+	{
+		is_leap_year = 1;
+	}
+	if(input_year % 100 == 0)
+	{
+		is_leap_year = 0;
+	}
+	else if(input_year % 400 == 0)
+	{
+		is_leap_year = 1;
+	}
+	return is_leap_year;
 }
 
 void print_weekdays()
@@ -147,7 +172,7 @@ void print_month_name(int month_current)
 	printf("\n\n%s %d\n\n ", "Month name placeholder", month_current);
 }
 
-void calculate_month_reference(int month_current)
+void calculate_month_reference()
 {
 	
 }
