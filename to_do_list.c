@@ -30,6 +30,8 @@ int main(void)
 	*/
 	printf("%s\n", "This is your to-do-list, just enter a task to add it to your task list: ");
 	create_task_string();
+	//create_task_string();
+	//create_task_string();
 	return 0;
 }
 
@@ -45,13 +47,17 @@ void create_task_string()
 		task_string[task_character_count] = current_character;
 		++task_character_count;
 	}
-	char tasks[10][array_max_size];
-	tasks[0][1] = task_string[0];
+	int task_list_limit = 10;
+	int task_list_amount = 0;
+	if(task_list_amount < task_list_limit)
+	{
+		++task_list_amount;
+	}
+	char tasks[task_list_limit][array_max_size];
 	for(int i = 0; i < array_max_size; ++i)
 	{
 		tasks[0][i] = task_string[i];
 	}
-	printf("%d\n", task_character_count);
 	printf("%s\n", task_string);
 	printf("%s\n", tasks[0]);
 }
