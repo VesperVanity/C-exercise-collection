@@ -41,19 +41,19 @@ void create_task_string()
 	char current_character = ' ';
 	//Fixed array size is probably a bug and should be dynamic, I do not know how yet
 	const int array_max_size = 255;
-	char task_string[255];
+	char task_string[array_max_size];
 	while((current_character = getchar()) != '\n')
 	{
 		task_string[task_character_count] = current_character;
 		++task_character_count;
 	}
-	char tasks[10][255];
+	char tasks[10][array_max_size];
 	for(int i = 0; i < array_max_size; ++i)
 	{
-		tasks[1][i] = task_string[i];
+		tasks[0][i] = task_string[i];
 	}
 	printf("%s\n", task_string);
-	printf("%s\n", tasks[1]);
+	printf("%s\n", tasks[0]);
 }
 
 void print_numbered_task_list()
