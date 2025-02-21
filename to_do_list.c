@@ -30,8 +30,6 @@ int main(void)
 	*/
 	printf("%s\n", "This is your to-do-list, just enter a task to add it to your task list: ");
 	create_task_string();
-	create_task_string();
-	create_task_string();
 	return 0;
 }
 
@@ -44,7 +42,7 @@ void create_task_string()
 	int task_character_count = 0;
 	char current_character = ' ';
 	//Fixed array size is probably a bug and should be dynamic, I do not know how yet
-	const int array_max_size = 255;
+	const int array_max_size = 1000;
 	char task_string[array_max_size];
 	while((current_character = getchar()) != '\n')
 	{
@@ -63,7 +61,7 @@ void create_task_string()
 		tasks[task_list_amount][i] = task_string[i];
 	}
 	printf("%s\n", task_string);
-	printf("%s\n", tasks[0]);
+	printf("%s\n", tasks[task_list_amount]);
 	printf("%d\n", task_character_count);
 }
 
