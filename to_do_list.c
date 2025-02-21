@@ -42,24 +42,26 @@ void create_task_string()
 	int task_character_count = 0;
 	char current_character = ' ';
 	//Fixed array size is probably a bug and should be dynamic, I do not know how yet
-	const int array_max_size = 1000;
-	char task_string[array_max_size];
+	const int ARRAY_MAX_SIZE = 1000;
+	char task_string[ARRAY_MAX_SIZE];
 	while((current_character = getchar()) != '\n')
 	{
 		task_string[task_character_count] = current_character;
 		++task_character_count;
 	}
-	char tasks[10][array_max_size];
-	const int task_list_limit = 10;
+	task_string[task_character_count] = '\0';
+	char tasks[10][ARRAY_MAX_SIZE];
+	const int TASK_LIST_LIMIT = 10;
 	int task_list_amount = -1;
-	if(task_list_amount < task_list_limit)
+	if(task_list_amount < TASK_LIST_LIMIT)
 	{
 		++task_list_amount;
 	}
-	for(int i = 0; i < array_max_size; ++i)
+	for(int i = 0; i < ARRAY_MAX_SIZE; ++i)
 	{
 		tasks[task_list_amount][i] = task_string[i];
 	}
+	
 	printf("%s\n", task_string);
 	printf("%s\n", tasks[task_list_amount]);
 	printf("%d\n", task_character_count);
