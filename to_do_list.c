@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void create_task_string();
+void create_task_string(int task_count);
 
 //No clue how to set that up just in the command line without any GUI
 //So let's just create the general functionality and print it to the console
@@ -29,7 +29,11 @@ int main(void)
 	}
 	*/
 	printf("%s\n", "This is your to-do-list, just enter a task to add it to your task list: ");
-	create_task_string();
+	const int TASK_AMOUNT_LIMIT = 10 + 1; 
+	for(int i = 1; i < TASK_AMOUNT_LIMIT; ++i)
+	{
+		create_task_string(i);
+	}
 	return 0;
 }
 
@@ -37,7 +41,7 @@ int main(void)
 //Every time I run the script the behavior changes, as if the last test
 //Is influencing the current test from a different runtime
 //Will fix it (hopefully) after learning how arrays and printf works
-void create_task_string()
+void create_task_string(int task_count)
 {
 	int task_character_count = 0;
 	char current_character = ' ';
@@ -50,21 +54,27 @@ void create_task_string()
 		++task_character_count;
 	}
 	task_string[task_character_count] = '\0';
-	char tasks[10][ARRAY_MAX_SIZE];
-	const int TASK_LIST_LIMIT = 10;
-	int task_list_amount = -1;
+	const int TASK_LIST_LIMIT = 10 + 1;
+	char tasks[TASK_LIST_LIMIT][ARRAY_MAX_SIZE];
+	/*
+	int task_list_amount = 0;
 	if(task_list_amount < TASK_LIST_LIMIT)
 	{
 		++task_list_amount;
 	}
+	*/
 	for(int i = 0; i < ARRAY_MAX_SIZE; ++i)
 	{
-		tasks[task_list_amount][i] = task_string[i];
+		tasks[task_count][i] = task_string[i];
 	}
-	
-	printf("%s\n", task_string);
-	printf("%s\n", tasks[task_list_amount]);
-	printf("%d\n", task_character_count);
+	for(int i = 0; i < task_count; ++i)
+	{
+		printf("%s\n", tasks[task_count - i]);
+	}
+	printf("\n");
+	//printf("%s\n", task_string);
+	//printf("%s\n", tasks[task_list_amount]);
+	//printf("%d\n", task_character_count);
 }
 
 void print_numbered_task_list()
