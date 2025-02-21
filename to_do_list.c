@@ -35,6 +35,10 @@ int main(void)
 	return 0;
 }
 
+//Pause for now to study about printf and streams and buffers and stuff
+//Every time I run the script the behavior changes, as if the last test
+//Is influencing the current test from a different runtime
+//Will fix it (hopefully) after learning how arrays and printf works
 void create_task_string()
 {
 	int task_character_count = 0;
